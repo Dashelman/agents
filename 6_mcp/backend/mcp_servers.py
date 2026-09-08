@@ -51,13 +51,13 @@ def researcher_mcp_servers(name: str) -> list[MCPServerStdio]:
         client_session_timeout_seconds=TIMEOUT,
     )
     search = MCPServerStdio(
-        {"command": "npx.cmd", "args": ["-y", "tavily-mcp@latest"], "env": tavily_env},
+        {"command": "npx", "args": ["-y", "tavily-mcp@latest"], "env": tavily_env},
         client_session_timeout_seconds=TIMEOUT,
         tool_filter=create_static_tool_filter(allowed_tool_names=["tavily_search"]),
     )
     memory = MCPServerStdio(
         {
-            "command": "npx.cmd",
+            "command": "npx",
             "args": ["-y", "mcp-memory-libsql"],
             "env": {"LIBSQL_URL": f"file:./memory/{name}.db"},
         },
